@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.exception.apiError.LowerCaseClassNameResolver;
+package sicredi.voting.agenda.api.config.exception.apierror.lowercaseclassnameresolver;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.jsontype.impl.TypeIdResolverBase;

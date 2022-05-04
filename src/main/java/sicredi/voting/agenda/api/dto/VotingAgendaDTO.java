@@ -1,10 +1,7 @@
 package sicredi.voting.agenda.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -14,7 +11,10 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class VotingAgendaDTO implements Serializable {
+
+    Long id;
 
     @NotNull
     String name;
@@ -27,5 +27,7 @@ public class VotingAgendaDTO implements Serializable {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     Date dateEnd;
+
+    boolean isOpen;
 
 }

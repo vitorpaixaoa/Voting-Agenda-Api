@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.exception.apiError;
+package sicredi.voting.agenda.api.config.exception.apierror;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -8,7 +8,7 @@ import org.hibernate.validator.internal.engine.path.PathImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import sicredi.voting.agenda.api.exception.apiError.LowerCaseClassNameResolver.LowerCaseClassNameResolver;
+import sicredi.voting.agenda.api.config.exception.apierror.lowercaseclassnameresolver.LowerCaseClassNameResolver;
 
 import javax.validation.ConstraintViolation;
 import java.time.LocalDateTime;
@@ -80,7 +80,7 @@ public class ApiError {
         this.addValidationError(
                 objectError.getObjectName(),
                 objectError.getDefaultMessage());
-    };
+    }
 
     public void addValidationError(List<ObjectError> globalErrors){globalErrors.forEach(this::addValidationError);}
 

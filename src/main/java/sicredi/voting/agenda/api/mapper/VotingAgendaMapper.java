@@ -5,7 +5,6 @@ import org.modelmapper.PropertyMap;
 import org.springframework.stereotype.Component;
 import sicredi.voting.agenda.api.dto.VotingAgendaDTO;
 import sicredi.voting.agenda.api.model.VotingAgendaModel;
-import sicredi.voting.agenda.api.util.BaseMapper;
 
 @Component
 public class VotingAgendaMapper extends BaseMapper<VotingAgendaModel, VotingAgendaDTO> {

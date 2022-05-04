@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.web.bind.annotation.*;
 import sicredi.voting.agenda.api.dto.VerifyCpfDTO;
 import sicredi.voting.agenda.api.dto.VoteCountingDTO;
@@ -53,4 +56,12 @@ public class VotingAgendaController {
     public ResponseEntity<VerifyCpfDTO> verifyCpf(@PathVariable String cpf){
         return new ResponseEntity<>(service.verifyCpf(cpf), HttpStatus.OK);
     }
+
+    @MessageMapping("/send-result")
+    @SendTo("/topic/group")
+    public VoteCountingDTO broadcastGroupMessage(@Payload VoteCountingDTO result) {
+        //Sending this message to all the subscribers
+        return result;
+    }
+
 }

@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.exception;
+package sicredi.voting.agenda.api.config.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

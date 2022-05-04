@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.util;
+package sicredi.voting.agenda.api.mapper;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-public abstract class BaseMapper<TEntity, DTO> {
+public abstract class BaseMapper<T, D> {
 
     @Autowired
     private ModelMapper modelMapper;
@@ -24,65 +24,65 @@ public abstract class BaseMapper<TEntity, DTO> {
         return this.modelMapper;
     }
 
-    private final Class<TEntity> typeEntity;
+    private final Class<T> typeEntity;
 
-    private final Class<DTO> typeDTO;
+    private final Class<D> typeDTO;
 
     @SuppressWarnings("unchecked")
-    public BaseMapper() {
-        this.typeEntity = (Class<TEntity>) ((ParameterizedType) this.getClass().getGenericSuperclass())
+    protected BaseMapper() {
+        this.typeEntity = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass())
                 .getActualTypeArguments()[0];
-        this.typeDTO = (Class<DTO>) ((ParameterizedType) this.getClass().getGenericSuperclass())
+        this.typeDTO = (Class<D>) ((ParameterizedType) this.getClass().getGenericSuperclass())
                 .getActualTypeArguments()[1];
     }
 
     protected abstract void configure(ModelMapper modelMapper);
 
-    public DTO toDTO(TEntity entity) {
+    public D toDTO(T entity) {
         return entity != null ? this.getModelMapper().map(entity, this.typeDTO) : null;
     }
 
 
-    public DTO toDTO(Optional<TEntity> optional) {
+    public D toDTO(Optional<T> optional) {
         return optional.isPresent() ? this.getModelMapper().map(optional.get(), this.typeDTO) : null;
     }
 
-    public void toDTO(DTO dtoSource, DTO dtoDestination) {
+    public void toDTO(D dtoSource, D dtoDestination) {
         this.getModelMapper().map(dtoSource, dtoDestination);
     }
 
-    public TEntity toEntity(DTO dto) {
+    public T toEntity(D dto) {
         return dto != null ? this.getModelMapper().map(dto, this.typeEntity) : null;
     }
 
-    public void toEntity(TEntity entitySource, TEntity entityDestination) {
+    public void toEntity(T entitySource, T entityDestination) {
         this.getModelMapper().map(entitySource, entityDestination);
     }
 
-    public List<DTO> toDTO(List<TEntity> entities) {
+    public List<D> toDTO(List<T> entities) {
         return entities.stream().map(this::toDTO).collect(Collectors.toList());
     }
 
 
-    public List<TEntity> toEntity(List<DTO> dtos) {
+    public List<T> toEntity(List<D> dtos) {
         return dtos.stream().map(this::toEntity).collect(Collectors.toList());
     }
 
-    public Page<DTO> toDTO(Page<TEntity> listEntity) {
-        return listEntity.map(source -> BaseMapper.this.toDTO(source));
+    public Page<D> toDTO(Page<T> listEntity) {
+        return listEntity.map(BaseMapper.this::toDTO);
     }
 
 
 
-    public Page<TEntity> toEntity(Page<DTO> dtos) {
-        return dtos.map(source -> BaseMapper.this.toEntity(source));
+    public Page<T> toEntity(Page<D> dtos) {
+        return dtos.map(BaseMapper.this::toEntity);
     }
 
-    public Class<DTO> getTypeDTO() {
+    public Class<D> getTypeDTO() {
         return this.typeDTO;
     }
 
-    public Class<TEntity> getTypeEntity() {
+    public Class<T> getTypeEntity() {
         return this.typeEntity;
     }
 }

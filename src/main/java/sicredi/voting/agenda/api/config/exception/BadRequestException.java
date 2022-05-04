@@ -1,21 +1,20 @@
-package sicredi.voting.agenda.api.exception;
+package sicredi.voting.agenda.api.config.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Getter
-@AllArgsConstructor
-@NoArgsConstructor
 @ResponseStatus(HttpStatus.BAD_REQUEST)
+@AllArgsConstructor
 public class BadRequestException extends RuntimeException {
     
 	private static final long serialVersionUID = 1L;
 	
-	private String field;
-    private String message;
+	private final String field;
+    private final String message;
 
 
 }

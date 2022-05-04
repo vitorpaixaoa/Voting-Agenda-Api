@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.exception.apiError;
+package sicredi.voting.agenda.api.config.exception.apierror;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
-public class ApiValidationError extends ApiSubError {
+public class ApiValidationError implements ApiSubError {
     private String object;
     private String field;
     private Object rejectedValue;

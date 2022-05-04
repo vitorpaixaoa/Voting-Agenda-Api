@@ -1,4 +1,4 @@
-package sicredi.voting.agenda.api.exception;
+package sicredi.voting.agenda.api.config.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
@@ -20,7 +20,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import sicredi.voting.agenda.api.exception.apiError.ApiError;
+import sicredi.voting.agenda.api.config.exception.apierror.ApiError;
 
 import javax.validation.constraints.NotNull;
 
