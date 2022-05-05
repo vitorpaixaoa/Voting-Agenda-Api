@@ -52,4 +52,10 @@ São disponibilizados os seguintes endpoints:
 | POST         |  /{id}/vote   |   Votar em uma pauta  |
 | GET         |  /{id}/votes   |  Buscar resultado da votação  |
 
+  ### Socket
+  A aplicação disponibiliza um <strong>Socket<strong> para consumir as messages de Resultado das votações
+  http://localhost:8080/vote-result/
+  
+  as notifações ficam no tópico:
+  '/topic/group'
 
