@@ -7,4 +7,4 @@ E então, iniciar a aplicação spring.
 
 Também criei um frontend para melhor visualização da resposta do topic Kafka.
 
-o projeto pode ser encontrado clicando <a href="https://github.com/vitorpaixaoa/springboot-backend">aqui</a>
+o projeto pode ser encontrado clicando <a href="https://github.com/vitorpaixaoa/voting-agenda-app">aqui</a>
