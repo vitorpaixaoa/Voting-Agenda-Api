@@ -63,6 +63,8 @@ public class VotingAgendaService {
         if (isNull(model.getDateEnd())) {
             model.setDateEnd(DateUtils.addMinutes(model.getDateStart(), 1));
         }
+        log.info(model.getDateStart().toString());
+        log.info(model.getDateEnd().toString());
         return mapper.toDTO(repository.save(model));
     }
 
